@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { makeGraphqlMutation, makeGraphqlQuery } from 'apollo-client';
+import { makeGraphqlQuery } from 'apollo-client';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = any;

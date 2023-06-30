@@ -1,7 +1,6 @@
-import { gql } from '@apollo/client';
-import { makeGraphqlMutation } from 'apollo-client';
 import type { NextApiRequest, NextApiResponse } from 'next';
-var Python = require('python-runner');
+
+const Python = require('python-runner');
 
 type Data = any;
 
@@ -36,7 +35,7 @@ def input():
 `;
 };
 const runPythonCode = async (code: string, input: string, languageId: any) => {
-  return Python.exec([readlineFn(input) + code], { bin: 'python3' })
+  return Python.exec([readlineFn(input) + code], { bin: 'python' })
     .then(function (output: any) {
       return {
         data: {
@@ -46,9 +45,9 @@ const runPythonCode = async (code: string, input: string, languageId: any) => {
               id: Math.round(Math.random() * 100000000000),
               user_id: '',
               programming_language_id: languageId,
-              input: input,
+              input,
               code_content: code,
-              output: output,
+              output,
               running_time: 0,
               memory_used: 0,
               created_at: Date.now(),
@@ -63,35 +62,35 @@ const runPythonCode = async (code: string, input: string, languageId: any) => {
         data: {
           create_submission: {
             error_code: 'runtime_error',
-            error_message: 'Runtime error:\n' + (err ?? err.message),
+            error_message: `Runtime error:\n${err ?? err.message}`,
           },
         },
       };
     });
 };
 
-const CREATE_SUBMISSION_MUTATION = gql`
-  mutation create_submission($input: CreateSubmissionInput!) {
-    create_submission(input: $input) {
-      error_message
-      error_code
-      status
-      submission {
-        id
-        user_id
-        programming_language_id
-        input
-        code_content
-        output
-        error
-        running_time
-        memory_used
-        created_at
-        submission_status
-      }
-    }
-  }
-`;
+// const CREATE_SUBMISSION_MUTATION = gql`
+//   mutation create_submission($input: CreateSubmissionInput!) {
+//     create_submission(input: $input) {
+//       error_message
+//       error_code
+//       status
+//       submission {
+//         id
+//         user_id
+//         programming_language_id
+//         input
+//         code_content
+//         output
+//         error
+//         running_time
+//         memory_used
+//         created_at
+//         submission_status
+//       }
+//     }
+//   }
+// `;
 
 export default async function handler(
   req: NextApiRequest,
@@ -116,7 +115,7 @@ export default async function handler(
     return;
   }
 
-  let result = await runPythonCode(
+  const result = await runPythonCode(
     code || '',
     customInput || '',
     languageId || 63,

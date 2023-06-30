@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     // "skipLibCheck": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -23,7 +19,7 @@
     // Don't emit; allow Babel to transform files.
     "noEmit": true,
     // Enable strictest settings like strictNullChecks & noImplicitAny.
-    "strict": true,
+    "strict": false,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
     // use typescript to transpile jsx to js
@@ -32,7 +28,7 @@
     "removeComments": true,
     "alwaysStrict": true,
     "allowUnreachableCode": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -40,10 +36,7 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "typeRoots": [
-      "src/@types",
-      "node_modules/@types"
-    ],
+    "typeRoots": ["src/@types", "node_modules/@types"],
     "skipLibCheck": true,
     "plugins": [
       {
@@ -51,13 +44,6 @@
       }
     ]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

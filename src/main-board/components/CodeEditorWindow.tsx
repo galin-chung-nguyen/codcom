@@ -1,20 +1,19 @@
 // CodeEditorWindow.js
 
-import React, { useEffect, useState } from "react";
-
-import Editor from "@monaco-editor/react";
+import Editor from '@monaco-editor/react';
+import React from 'react';
 
 const CodeEditorWindow = ({ onChange, language, code, theme }: any) => {
   return (
-    <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
+    <div className="overlay shadow-4xl h-full w-full overflow-hidden rounded-md">
       <Editor
         height="85vh"
-        width={`100%`}
-        language={language || "javascript"}
+        width="100%"
+        language={language || 'javascript'}
         value={code}
         theme={theme}
         defaultValue="// some comment"
-        onChange={(newValue) => onChange("code", newValue)}
+        onChange={(newValue) => onChange('code', newValue)}
       />
     </div>
   );

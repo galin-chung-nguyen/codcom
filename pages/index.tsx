@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from 'src/app/components/NavBar';
 import Toast from 'src/app/components/Toast';
-import CryptoAnalysisCodeEditor from 'src/main-board/components/codeEditor';
+import CryptoAnalysisCodeEditor from 'src/main-board/components/CodeEditor';
 // import PyodideProvider from 'src/main-board/components/pyodide-provider';
 
 const Home = () => {
@@ -12,14 +12,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='bg-[rgb(250,250,250)]'>
+    <div className="bg-[rgb(250,250,250)]">
       <NavBar />
-      <div className="mx-auto pt-[78px] w-full 2xl:container">
-        { loaded && <CryptoAnalysisCodeEditor />}
+      <div className="mx-auto w-full pt-[78px] 2xl:container">
+        {loaded && <CryptoAnalysisCodeEditor />}
       </div>
       <Toast />
-    </div >
+    </div>
   );
-}
+};
 
 export default Home;

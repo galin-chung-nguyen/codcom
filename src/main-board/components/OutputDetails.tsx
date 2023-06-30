@@ -1,24 +1,23 @@
-import React from "react";
-import { AnyAction } from "redux";
+import React from 'react';
 
 const OutputDetails = ({ outputDetails }: any) => {
   return (
     <div className="metrics-container mt-4 flex flex-col space-y-3">
       <p className="text-sm">
-        Status:{" "}
-        <span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
+        Status:{' '}
+        <span className="rounded-md bg-gray-100 px-2 py-1 font-semibold">
           {outputDetails?.status?.description}
         </span>
       </p>
       <p className="text-sm">
-        Memory:{" "}
-        <span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
+        Memory:{' '}
+        <span className="rounded-md bg-gray-100 px-2 py-1 font-semibold">
           {outputDetails?.memory}
         </span>
       </p>
       <p className="text-sm">
-        Time:{" "}
-        <span className="font-semibold px-2 py-1 rounded-md bg-gray-100">
+        Time:{' '}
+        <span className="rounded-md bg-gray-100 px-2 py-1 font-semibold">
           {outputDetails?.time}
         </span>
       </p>

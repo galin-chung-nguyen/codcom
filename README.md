@@ -1,19 +1,22 @@
 # Codcom
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/galin-chung-nguyen/codcom)
 ![GitHub contributors](https://img.shields.io/github/contributors/galin-chung-nguyen/codcom)
 ![GitHub stars](https://img.shields.io/github/stars/galin-chung-nguyen/codcom?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/galin-chung-nguyen/codcom?style=social)
+
 <!-- ![Twitter Follow](https://img.shields.io/twitter/follow/scottydocs?style=social) -->
 
 Codcom is an online algorithmic trading platform that helps users to build algorithmic crypto trading strategy in the easiest way with built-in code editor, provided crypto APIs, real time crypto market data and charts.
 
 ## Author
 
-This project belongs to @[me](https://github.com/galin-chung-nguyen). 
+This project belongs to @[me](https://github.com/galin-chung-nguyen).
 
 ## Technology stack
+
 - Front-end: NextJS, Redux, TailwindCSS
 - Back-end: NestJS, MongoDB, Prisma, GraphQL
 
@@ -49,6 +52,7 @@ or
 
 yarn install
 ```
+
 ## Using Codcom
 
 To run Codcom, use this command:
@@ -56,12 +60,13 @@ To run Codcom, use this command:
 ```
 npm run dev/ npm run start
 
-or 
+or
 
 yarn dev/ yarn start
 ```
 
 ## Contributing to Codcom
+
 To contribute to Codcom, follow these steps:
 
 1. Fork this repository.

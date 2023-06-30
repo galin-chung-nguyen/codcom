@@ -1,12 +1,11 @@
-import 'styles/globals.css'
-import type { AppProps } from 'next/app'
-import { ApolloProvider, gql } from "@apollo/client";
-import client, { makeGraphqlQuery } from "apollo-client";
+import 'styles/globals.css';
 
-import { wrapper, store } from "redux/reduxStore";
-import { Provider } from "react-redux";
+import { ApolloProvider } from '@apollo/client';
+import client from 'apollo-client';
+import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import { store, wrapper } from 'redux/reduxStore';
 import Toast from 'src/app/components/Toast';
-import memoryCache from 'utility/mem-cache/mem-cache';
 // import { useEffect, useState } from 'react';
 // import { setJwtTokenAction, setUserInfoAction } from 'redux/actions/actions';
 // import { useRouter } from 'next/router';
@@ -19,13 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <ApolloProvider client={client}>
         <Toast />
-         <Component {...pageProps} />
+        <Component {...pageProps} />
       </ApolloProvider>
     </Provider>
   );
 }
 
-MyApp.getInitialProps = async (context: any) => {
+MyApp.getInitialProps = async () => {
   // if (typeof window === "undefined" && !memoryCache.get('python-engine')) {
   // //   const signature = Math.random();
   // //   memoryCache.set('tickersWSstarted', signature);
