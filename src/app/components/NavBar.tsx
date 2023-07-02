@@ -95,12 +95,12 @@ export default function NavBar() {
                   Code comment generator
                 </span>
               </Link>
-              <Link href="#">
+              <Link href="https://github.com/galin-chung-nguyen/codcom">
                 <span className="px-2 py-4 font-semibold text-gray-500 transition duration-300 hover:text-[#01884f]">
                   Github
                 </span>
               </Link>
-              <Link href="#">
+              <Link href="https://github.com/galin-chung-nguyen">
                 <span className="px-2 py-4 font-semibold text-gray-500 transition duration-300 hover:text-[#01884f]">
                   About Us
                 </span>

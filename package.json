@@ -1,8 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "start-frontend": "next dev -p 3000",
     "build": "next build",
+    "start-backend": "FLASK_DEBUG=1 python3 -m flask --app back-end/api/index run -p 3001",
+    "start": "concurrently \"yarn run start-backend\" \"yarn run start-frontend\"",
     "prod": "next start",
     "lint": "next lint",
     "lint:fix": "eslint . --fix",
@@ -19,6 +21,7 @@
     "axios": "^0.27.2",
     "binance-api-node": "^0.11.40",
     "client-side-python-runner": "^1.7.1",
+    "concurrently": "^8.2.0",
     "eslint-prettier": "^0.0.0-empty",
     "fs": "^0.0.1-security",
     "graphql": "^16.5.0",
@@ -39,6 +42,7 @@
     "net": "^1.0.2",
     "next": "latest",
     "next-redux-wrapper": "^7.0.5",
+    "node-fetch": "^3.3.1",
     "npm": "^9.7.2",
     "prettier": "^2.7.1",
     "python-runner": "^1.1.0",

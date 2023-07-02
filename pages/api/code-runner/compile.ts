@@ -23,8 +23,9 @@ type Data = any;
 //   }
 // }
 const readlineFn = (input: string) => {
-  return `
-stdin = '''${input}'''.split()
+  const newCode = `
+stdin = '''${input}''';
+stdin = stdin.split(` + "'\\n'" + `)[::-1]
 def input():
   if(len(stdin) < 0):
     raise Exception("No more data to read from stdin.")
@@ -33,9 +34,40 @@ def input():
     stdin.pop()
     return line
 `;
+
+return newCode
 };
 const runPythonCode = async (code: string, input: string, languageId: any) => {
-  return Python.exec([readlineFn(input) + code], { bin: 'python' })
+  console.log(`${process.env.BACK_END_ENDPOINT}/api/gen-comment`)
+  let code_comment = '';
+
+  const formData = new URLSearchParams();
+  formData.append('code', code);
+
+  await fetch(
+    `${process.env.BACK_END_ENDPOINT}/api/gen-comment`,
+    {
+      method: 'POST',
+      body: formData
+    },
+  )
+    .then((response) => {
+      // Check if the response was successful (status code 200)
+      if (response.ok) {
+        return response.text();
+      } else {
+        throw new Error('Request failed with status code ' + response.status);
+      }
+    })
+    .then((comment) => {
+      code_comment = comment;
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      code_comment = "[!] Internal error while generating comment. Please try again"
+    });
+
+  return Python.exec([readlineFn(input) + code], { bin: 'python3' })
     .then(function (output: any) {
       return {
         data: {
@@ -48,10 +80,11 @@ const runPythonCode = async (code: string, input: string, languageId: any) => {
               input,
               code_content: code,
               output,
+              code_comment,
               running_time: 0,
               memory_used: 0,
               created_at: Date.now(),
-              submission_status: 'FULLY_FINISHED',
+              submission_status: 'FULLY_EXECUTED',
             },
           },
         },

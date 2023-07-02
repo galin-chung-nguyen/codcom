@@ -103,7 +103,7 @@ const CryptoAnalysisCodeEditor = () => {
           } else {
           }
 
-          if (submission.submission_status !== 'FULLY_FINISHED')
+          if (submission.submission_status !== 'FULLY_EXECUTED')
             setOutputDetails({
               status: {
                 type: status,
@@ -111,6 +111,7 @@ const CryptoAnalysisCodeEditor = () => {
                 description: submission?.submission_status || 'FAILED',
               },
               stdout: submission?.output || '',
+              code_comment: submission?.code_comment || '',
               stderr: error_message || submission.error,
               time: submission?.running_time || -1,
               memory: submission?.memory_used || -1,
@@ -141,7 +142,7 @@ const CryptoAnalysisCodeEditor = () => {
         };
       });
 
-    if (submission.submission_status === 'FULLY_FINISHED') {
+    if (submission.submission_status === 'FULLY_EXECUTED') {
       showSuccessToast(`Submission #${submission.id} executed successfully!`);
       setOutputDetails({
         status: {
@@ -150,6 +151,7 @@ const CryptoAnalysisCodeEditor = () => {
           description: submission.submission_status,
         },
         stdout: submission?.output || '',
+        code_comment: submission?.code_comment || '',
         stderr: '',
         time: submission?.running_time || -1,
         memory: submission?.memory_used || -1,
@@ -168,9 +170,9 @@ const CryptoAnalysisCodeEditor = () => {
     console.log('theme...', theme);
 
     if (['light', 'vs-dark'].includes(theme?.value)) {
-      setTheme(theme);
+      setTheme(() => theme?.value);
     } else {
-      defineTheme(theme?.value).then(() => setTheme(theme));
+      defineTheme(theme?.value).then(() => setTheme(() => theme?.value));
     }
   }
 

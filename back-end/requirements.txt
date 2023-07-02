@@ -1,0 +1,10 @@
+numpy
+Flask
+pytorch_lightning
+transformers
+wandb
+sentence-transformers
+tensorflow
+matplotlib
+seaborn
+gdown
